@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import PevVue from '../components/Pev.vue';
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <PevVue />
   </main>
 </template>
