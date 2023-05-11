@@ -12,13 +12,16 @@ export default {
     plan: {
       type: String,
       default: plan,
+    },
+    query: {
+      type: String,
+      default: ''
     }
   },
   components: {
     pev2: Plan,
   },
   setup() {
-
     return {
       error,
     }
@@ -33,7 +36,7 @@ export default {
 </script>
 
 <template>
-  <pev2 v-if="!error" :plan-source="plan" plan-query="" />
+  <pev2 v-if="!error" :plan-source="plan" :plan-query=query />
   <div v-else>
     <h1>PEV2</h1>
     <p>There was an error loading the plan.</p>

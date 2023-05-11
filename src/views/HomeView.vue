@@ -10,6 +10,7 @@ const visible = ref(false);
 const label = ref(`Query Plan ${new Date().toISOString()}`);
 const queryPlan = ref('');
 const query = ref('');
+const componentKey = ref(0);
 
 const pevFinalData = reactive({
   plan: "Seq Scan on empty_plan  (cost=0.00..155.00 rows=10000 width=4)",
@@ -26,6 +27,7 @@ function savePlan(){
   pevFinalData.label = label.value ? label.value : `Query Plan ${new Date().toISOString()}`;
 
   toggleVisible();
+  componentKey.value += 1;
 }
 </script>
 
@@ -37,7 +39,7 @@ function savePlan(){
       </h1>
       <Button label="Edit Plan" size="small" class="edit-plan-btn" @click="toggleVisible" />
     </div>
-    <PevVue :plan="pevFinalData.plan" :query="query"/>
+    <PevVue :key="componentKey" :plan="pevFinalData.plan" :query="query"/>
     <Dialog
       v-model:visible="visible"
       modal
